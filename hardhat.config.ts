@@ -30,6 +30,14 @@ const config: HardhatUserConfig = {
       accounts:
         process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
     },
+    kovan: {
+      url: process.env.KOVAN_URL || "",
+    },
+    mainnet: {
+      forking: {
+        url: process.env.MAINNET_URL || "",
+      }
+    }  
   },
   gasReporter: {
     enabled: process.env.REPORT_GAS !== undefined,
