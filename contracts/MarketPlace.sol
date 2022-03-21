@@ -5,8 +5,8 @@ import "./Interface.sol";
 
 contract MarketPlace {
 PriceConverter priceCalc;
-IERC20 TokenA;
-IERC20 TokenB;
+IERC20 private TokenA;
+IERC20 private TokenB;
 
 struct SwapRecord {
     address fromToken;
