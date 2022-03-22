@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.7;
+pragma solidity ^0.8.4;
 import "./Price.sol";
 import "./Interface.sol";
 
 contract MarketPlace {
-PriceConverter priceCalc;
+PriceConverter priceCalc = PriceConverter(0x40a42Baf86Fc821f972Ad2aC878729063CeEF403);
 IERC20 private TokenA;
 IERC20 private TokenB;
 
@@ -40,18 +40,18 @@ function SwapToken(address _fromToken, address _toToken, address _baseToken, add
 }
 
 
-function transferFromClientToContract(uint256 _amount, address _fromToken)  internal returns(bool) {
-    TokenA = IERC20(_fromToken);
-require(TokenA.balanceOf(msg.sender) >= _amount, "insufficient fund");
-return TokenA.transferFrom(msg.sender, address(this), _amount);
+        function transferFromClientToContract(uint256 _amount, address _fromToken)  internal returns(bool) {
+            TokenA = IERC20(_fromToken);
+        require(TokenA.balanceOf(msg.sender) >= _amount, "insufficient fund");
+        return TokenA.transferFrom(msg.sender, address(this), _amount);
 
-}
+        }
 
-function transferFromContractToClient( uint256 _amount, address _toToken) internal returns (bool){
-TokenB = IERC20(_toToken);
-require(TokenB.balanceOf(address(this)) >= _amount, "Insufficient amount");
-return TokenB.transfer(msg.sender, _amount);
-}
+    function transferFromContractToClient( uint256 _amount, address _toToken) internal returns (bool){
+    TokenB = IERC20(_toToken);
+    require(TokenB.balanceOf(address(this)) >= _amount, "Insufficient amount");
+    return TokenB.transfer(msg.sender, _amount);
+    }
 
 
 

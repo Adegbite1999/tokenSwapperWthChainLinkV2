@@ -33,7 +33,7 @@ const config: HardhatUserConfig = {
     kovan: {
       url: process.env.KOVAN_URL || "",
     },
-    mainnet: {
+    hardhat: {
       forking: {
         url: process.env.MAINNET_URL || "",
       }
