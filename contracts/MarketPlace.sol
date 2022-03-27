@@ -42,14 +42,12 @@ function SwapToken(address _fromToken, address _toToken, address _baseToken, add
 
         function transferFromClientToContract(uint256 _amount, address _fromToken)  internal returns(bool) {
             TokenA = IERC20(_fromToken);
-        require(TokenA.balanceOf(msg.sender) >= _amount, "insufficient fund");
         return TokenA.transferFrom(msg.sender, address(this), _amount);
 
         }
 
     function transferFromContractToClient( uint256 _amount, address _toToken) internal returns (bool){
     TokenB = IERC20(_toToken);
-    require(TokenB.balanceOf(address(this)) >= _amount, "Insufficient amount");
     return TokenB.transfer(msg.sender, _amount);
     }
 
